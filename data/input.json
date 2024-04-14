@@ -3,6 +3,13 @@
     "description": "Run mode (1 - Statistical calculation, 0 - Test)",
     "value": 3
   },
+<<<<<<< HEAD
+=======
+  "noRunPerHallway": {
+    "description": "Number of times the AGV runs for each hallway",
+    "value": 1.5
+  },
+>>>>>>> 412daf9a04ac5e9c7ed78567977f94f8ddb9d997
   "graphicsMode": {
     "description": "Graphics mode (1 - Graphics, 0 - No Graphics)",
     "value": 1
