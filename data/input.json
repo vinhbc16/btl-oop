@@ -5,7 +5,7 @@
   },
   "noRunPerHallway": {
     "description": "Number of times the AGV runs for each hallway",
-    "value": 1
+    "value": 1.5
   },
   "graphicsMode": {
     "description": "Graphics mode (1 - Graphics, 0 - No Graphics)",
