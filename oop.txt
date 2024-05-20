@@ -1,0 +1,84 @@
+#include<iostream>
+#include<sstream>
+#include<vector>
+#include<fstream>
+#include<string>
+#include<map>
+using namespace std ;
+int main(){
+	map<string,vector<float>> mp ; //Khoi tao map co key la ten cac toa va value la mot vector chua dia chi cua toa
+ 	ifstream file("E:/hospital.txt") ; // Mo file hospital
+    string s ; int i = 1 ; vector<float> v ;
+    while(getline(file,s)){ // Doc tung dong trong file hospital , i la chi so dong
+    	if( i == 1 ){ //  so toa = 9
+    		v.push_back(stof(s)) ;
+    		mp["So Toa"] = v ;
+    		v.clear();
+    		i++;
+		}
+		else if( i > 1 && i <= 10 ){ // ten va toa do tung toa la kieu map voi key la ten toa va value la toa do tuong ung cua toa
+			stringstream ss(s) ;
+			int m ; string tmp ; string res ;
+			while(ss>>tmp){
+				if( (int)tmp[0] >= 65 ){
+					res = tmp ;
+				}
+				else{
+					v.push_back(stof(tmp)) ;
+				}
+			}
+			mp[res] = v ;
+			v.clear() ; 
+			i++;
+		}
+		else if( i == 11 ){ // toa do toa A 
+			stringstream ss(s) ;
+			int m ; string tmp ;
+			while(ss>>tmp){
+				v.push_back(stof(tmp)) ;
+			}
+			mp["A"] = v ;
+			v.clear() ;
+			i++;
+		}
+		else if( i == 12 ){ // Toa do AGV vao
+			stringstream ss(s) ;
+			int m ; string tmp ;
+			while(ss>>tmp){
+				v.push_back(stof(tmp)) ;
+			}
+			mp["AGV IN"] = v ;
+			v.clear() ;
+			i++;
+		}
+		else if( i == 13 ){ // Toa do AGV ra
+			stringstream ss(s) ;
+			int m ; string tmp ;
+			while(ss>>tmp){
+				v.push_back(stof(tmp)) ;
+			}
+			mp["AGV OUT"] = v ;
+			v.clear();
+			i++;
+		}
+		else if( i == 14 ){ // Toa do ca mieng dat hinh chu nhat
+			stringstream ss(s) ;
+			int m ; string tmp ;
+			while(ss>>tmp){
+				v.push_back(stof(tmp)) ;
+			}
+			mp["LAND"] = v ;
+			v.clear();
+			i++;
+		}
+	}
+	file.close(); // Dong file hospital
+	for(auto x : mp){
+		cout << x.first << " : " ;
+		for( int y : x.second ){
+			cout << y << " " ;
+		}
+		cout << endl ;
+	}
+	return 0;
+}
